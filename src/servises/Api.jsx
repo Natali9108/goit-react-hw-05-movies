@@ -31,7 +31,15 @@ export const getMovieCast = async movieId => {
   const { data } = await axios.get(
     `movie/${movieId}/credits?api_key=${API_KEY}`
   );
-  console.log(data);
+
+  return data;
+};
+
+export const getReviewMovie = async movieId => {
+  const { data } = await axios.get(
+    `movie/${movieId}/reviews?api_key=${API_KEY}`,
+    { params: { language: 'en-US', page: '1' } }
+  );
   return data;
 };
 

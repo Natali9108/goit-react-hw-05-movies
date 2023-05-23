@@ -2,26 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, Outlet } from 'react-router-dom';
 import * as ApiServise from '../servises/Api';
 
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     accept: 'application/json',
-//     Authorization:
-//       'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMDQxNWQ0ZmZhZjAyYWJmNTg3MDg3Nzk1YzlmNDM1OCIsInN1YiI6IjY0NmI0ZGJmMmJjZjY3MDExYmY0NTc3NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PZEMQTvbZ4N5DdoHgmjy5jv9wXM9Ll_N7E5IJX4SsU0',
-//   },
-// };
-const URL = 'https://image.tmdb.org/t/p/w300';
-
 export const MovieDetails = () => {
   const { movieId } = useParams();
-  const [movie, setMovie] = useState('');
-  // const [image, setImage] = useState('');
-
-  // useEffect(() => {
-  //   ApiServise.getImages().then(({ images }) => {
-  //     setImage({ images });
-  //   });
-  // }, []);
+  const [movie, setMovie] = useState(null);
 
   useEffect(() => {
     ApiServise.getMovieDetails(movieId)
@@ -29,11 +12,18 @@ export const MovieDetails = () => {
       .catch(err => console.error(err));
   }, [movieId]);
 
+  if (!movie) {
+    return;
+  }
+
   return (
     <div>
-      <img src={`${URL + movie.poster_path}`} alt={movie.title} />
+      <img
+        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+        alt={movie.title}
+      />
       <h2>
-        {movie.title} ({movie.release_date})
+        {movie.title} ({movie.release_date.slice(0, 4)})
       </h2>
       <ul>
         <li>
@@ -46,7 +36,7 @@ export const MovieDetails = () => {
         </li>
         <li>
           <span>Genres </span>
-          <p>{}</p>
+          <p>{movie.genres.map(el => el.name).join('  ')}</p>
         </li>
       </ul>
       <div>
