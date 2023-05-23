@@ -2,8 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import * as ApiServise from '../servises/Api';
 
-const URL = 'https://image.tmdb.org/t/p/w300';
-
 export const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
