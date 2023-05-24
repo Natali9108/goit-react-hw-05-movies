@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import * as ApiServise from '../servises/Api';
+import { TrendingMovieList } from 'components';
 
 const Home = () => {
   const [trendingFilms, setTrendingFilms] = useState([]);
-  const location = useLocation();
 
   useEffect(() => {
     ApiServise.getTrendingMovies()
@@ -15,18 +14,10 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <h1>Trending today</h1>
-      <ul>
-        {trendingFilms.map(({ id, title }) => (
-          <li key={id}>
-            <Link to={`/movies/${id}`} state={{ from: location }}>
-              {title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </>
+    <div>
+    
+      <TrendingMovieList movies={trendingFilms} />
+    </div>
   );
 };
 
