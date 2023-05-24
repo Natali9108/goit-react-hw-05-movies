@@ -1,10 +1,14 @@
-import { useEffect, useState } from 'react';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import { HiArrowNarrowLeft } from 'react-icons/hi';
 import * as ApiServise from '../servises/Api';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+  const location = useLocation();
+  const baskLinkLocationRef = useRef(location.state?.from);
 
   useEffect(() => {
     ApiServise.getMovieDetails(movieId)
@@ -18,6 +22,11 @@ export const MovieDetails = () => {
 
   return (
     <div>
+      <Link to={baskLinkLocationRef.current}>
+        <HiArrowNarrowLeft />
+        Go Back
+      </Link>
+
       <img
         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
         alt={movie.title}
@@ -50,7 +59,11 @@ export const MovieDetails = () => {
           </li>
         </ul>
       </div>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
+
+export default MovieDetails;

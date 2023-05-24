@@ -19,6 +19,22 @@ export const getTrendingMovies = async () => {
   return data;
 };
 
+export const getSearchMovies = async query => {
+  const { data } = await axios.get(
+    `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`,
+    {
+      params: {
+        query: `${query}`,
+        include_adult: 'false',
+        language: 'en-US',
+        page: '1',
+      },
+    }
+  );
+
+  return data;
+};
+
 export const getMovieDetails = async movieId => {
   const { data } = await axios.get(`movie/${movieId}?api_key=${API_KEY}`, {
     params: { language: 'en-US' },

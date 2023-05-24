@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as ApiServise from '../servises/Api';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
 
@@ -25,3 +25,5 @@ export const Reviews = () => {
     </div>
   );
 };
+
+export default Reviews;
