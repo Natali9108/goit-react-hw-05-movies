@@ -1,11 +1,18 @@
+import PropTypes from 'prop-types';
 import { MovieURL } from 'utils';
+import defaultMovieimg from '../../img/movie.jpg';
+import { MovieImg } from './MovieDetailsList.styled';
 
 export const MovieDetailsList = ({ movie }) => {
   const { poster_path, title, release_date, vote_average, overview, genres } =
     movie;
+
   return (
     <div>
-      <img src={`${MovieURL}${poster_path}`} alt={title} />
+      <MovieImg
+        src={poster_path ? `${MovieURL}${poster_path}` : defaultMovieimg}
+        alt={title}
+      />
       <h2>
         {title} ({release_date.slice(0, 4)})
       </h2>
@@ -25,4 +32,15 @@ export const MovieDetailsList = ({ movie }) => {
       </ul>
     </div>
   );
+};
+
+MovieDetailsList.propTypes = {
+  movie: PropTypes.shape({
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+    overview: PropTypes.string,
+    genres: PropTypes.arrayOf(PropTypes.object),
+  }),
 };

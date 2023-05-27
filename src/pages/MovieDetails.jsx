@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
 import * as ApiServise from '../servises/Api';
-import { MovieDetailsList } from 'components';
+import { MovieDetailsList, Loader } from 'components';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -40,7 +40,7 @@ const MovieDetails = () => {
           </li>
         </ul>
       </div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </div>

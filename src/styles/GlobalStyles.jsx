@@ -12,6 +12,7 @@ export const GlobalStyles = css`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
       'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
       'Helvetica Neue', sans-serif;
+    color: ${theme.colors.dark};
     /* background: ${theme.colors.mainBackground}; */
     min-height: 100vh;
 
@@ -28,12 +29,12 @@ export const GlobalStyles = css`
     margin-top: 0;
   }
 
-  /* ul,
+  ul,
   ol {
     list-style: none;
     padding-left: 0;
     margin: 0;
-  } */
+  }
 
   img {
     display: block;

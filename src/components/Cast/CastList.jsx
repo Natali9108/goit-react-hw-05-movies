@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { castImgURL } from 'utils';
 import castImg from '../../img/cast.jpg';
 
@@ -18,4 +19,15 @@ export const CastList = ({ cast }) => {
       ))}
     </ul>
   );
+};
+
+CastList.propTypes = {
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      cast_id: PropTypes.number,
+      original_name: PropTypes.string,
+      profile_path: PropTypes.string,
+      character: PropTypes.string,
+    }).isRequired
+  ),
 };

@@ -1,10 +1,16 @@
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 
 export const MovieForm = ({ onSubmit }) => {
   const { register, handleSubmit } = useForm();
 
   const handleSearch = ({ query }, evt) => {
-    // setSearchParams({ query: query });
+    if (query === '') {
+      toast.warn('Please, write something to find movies', {
+        autoClose: 2000,
+      });
+    }
     onSubmit(query);
 
     evt.target.reset();
@@ -23,4 +29,8 @@ export const MovieForm = ({ onSubmit }) => {
       </form>
     </>
   );
+};
+
+MovieForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };

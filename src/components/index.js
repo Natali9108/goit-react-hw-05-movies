@@ -1,4 +1,5 @@
-export * from './TrendingMovieList/TrendingMovieList';
+export * from './MoviesItem/MoviesItem';
 export * from './MovieDetailsList/MovieDetailsList';
 export * from './MovieForm/MovieForm';
-export * from './MoviesList/MoviesList';
+export * from './Loader/Loader';
+export * from './Message/Message';
