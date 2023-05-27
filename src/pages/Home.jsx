@@ -1,34 +1,22 @@
 import { useEffect, useState } from 'react';
 import * as ApiServise from '../servises/Api';
-import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { MoviesItem } from 'components';
+import { MoviesList } from 'components';
 
 const Home = () => {
-  const [trendingFilms, setTrendingFilms] = useState([]);
-  const location = useLocation();
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     ApiServise.getTrendingMovies()
       .then(({ results }) => {
-        setTrendingFilms([...results]);
+        setMovies([...results]);
       })
       .catch(err => console.error(err));
   }, []);
 
   return (
     <div>
-      <h1>Trending today</h1>
-      <ul>
-        {trendingFilms.map(({ id, title }) => (
-          <MoviesItem
-            key={id}
-            title={title}
-            path={`/movies/${id}`}
-            state={{ from: location }}
-          />
-        ))}
-      </ul>
+      <MoviesList title="Trending today" movies={movies} />
     </div>
   );
 };

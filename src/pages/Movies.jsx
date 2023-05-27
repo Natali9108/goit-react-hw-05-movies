@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as ApiServise from '../servises/Api';
-import { MovieForm, Loader, Message, MoviesItem } from 'components';
+import { MovieForm, Loader, Message, MoviesList } from 'components';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -11,7 +11,6 @@ const Movies = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [isEmpty, setIsEmpty] = useState(false);
-  const location = useLocation();
 
   const handleSearchMovie = query => {
     setSearchParams({ query: query });
@@ -44,18 +43,7 @@ const Movies = () => {
       <MovieForm onSubmit={handleSearchMovie} />
       {error && <Message text={error} />}
       {isEmpty && <Message text={`For ${query} no movies found 😢`} />}
-      {movies && (
-        <ul>
-          {movies.map(({ id, title }) => (
-            <MoviesItem
-              key={id}
-              title={title}
-              path={`${id}`}
-              state={{ from: location }}
-            />
-          ))}
-        </ul>
-      )}
+      {movies && <MoviesList movies={movies} />}
       {isLoading && <Loader />}
     </div>
   );

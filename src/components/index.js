@@ -1,4 +1,5 @@
 export * from './MoviesItem/MoviesItem';
+export * from './MoviesList/MoviesList';
 export * from './MovieDetailsList/MovieDetailsList';
 export * from './MovieForm/MovieForm';
 export * from './Loader/Loader';
