@@ -19,7 +19,7 @@ const Reviews = () => {
   return (
     <div>
       {reviews.length === 0 ? (
-        <Message text="We don't hane ane reviews for this movie" />
+        <Message text="We don't hane any reviews for this movie" />
       ) : (
         <ReviewsList reviews={reviews} />
       )}
