@@ -26,6 +26,7 @@ export const MovieForm = ({ onSubmit }) => {
             type="text"
             {...register('query')}
             autoFocus
+            autoComplete="off"
             placeholder="Search films"
           />
           <SearchBtn type="submit">
