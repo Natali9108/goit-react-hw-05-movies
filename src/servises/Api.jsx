@@ -12,17 +12,14 @@ export const getTrendingMovies = async () => {
 };
 
 export const getSearchMovies = async query => {
-  const { data } = await axios.get(
-    `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`,
-    {
-      params: {
-        query: `${query}`,
-        include_adult: 'false',
-        language: 'en-US',
-        page: '1',
-      },
-    }
-  );
+  const { data } = await axios.get(`/search/movie?api_key=${API_KEY}`, {
+    params: {
+      query: `${query}`,
+      include_adult: 'false',
+      language: 'en-US',
+      page: '1',
+    },
+  });
 
   return data;
 };

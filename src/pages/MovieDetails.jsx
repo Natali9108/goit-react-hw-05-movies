@@ -8,7 +8,7 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const location = useLocation();
-  const baskLinkLocationRef = useRef(location.state?.from);
+  const baskLinkLocationRef = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     ApiServise.getMovieDetails(movieId)
