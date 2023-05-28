@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { MovieURL, MoviePlacholder } from 'utils';
 import {
   BoxMovie,
+  MoviesList,
   MovieImg,
   Overwiew,
   Genres,
   LinkBox,
+  LinkTitle,
 } from './MovieDetailsList.styled';
 
 export const MovieDetailsList = ({ movie }) => {
@@ -21,7 +23,7 @@ export const MovieDetailsList = ({ movie }) => {
           alt={title}
         />
 
-        <ul>
+        <MoviesList>
           <li>
             <h3>
               {title} ({release_date.slice(0, 4)})
@@ -42,10 +44,10 @@ export const MovieDetailsList = ({ movie }) => {
               <p>{genres.map(el => el.name).join(', ')}</p>
             </li>
           )}
-        </ul>
+        </MoviesList>
       </BoxMovie>
       <LinkBox>
-        <h3>Aditional information</h3>
+        <LinkTitle>Aditional information</LinkTitle>
         <Link to="cast">Cast</Link>
         <Link to="reviews">Reviews</Link>
       </LinkBox>

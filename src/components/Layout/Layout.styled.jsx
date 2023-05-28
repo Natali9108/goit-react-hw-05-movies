@@ -3,13 +3,12 @@ import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   margin: 0 auto;
-  /* padding: 0 16px; */
+  padding: 16px;
 `;
 
 export const Header = styled.header`
   display: flex;
   padding: ${props => props.theme.spacing(5)};
-  margin-bottom: ${props => props.theme.spacing(5)};
   box-shadow: ${props => props.theme.shadows.regular};
   > nav {
     display: flex;

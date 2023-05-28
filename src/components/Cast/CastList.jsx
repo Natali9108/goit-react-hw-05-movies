@@ -1,21 +1,36 @@
 import PropTypes from 'prop-types';
 import { castImgURL, castPlacholder } from 'utils';
-import { ListCast, CastImg } from './CastList.styled';
+import {
+  ListCast,
+  CastItem,
+  CastImg,
+  Wrapper,
+  OriginalName,
+  Character,
+  CharacterText,
+} from './CastList.styled';
 
 export const CastList = ({ cast }) => {
   return (
-    <ListCast>
-      {cast.map(({ cast_id, original_name, profile_path, character }) => (
-        <li key={cast_id}>
-          <CastImg
-            src={profile_path ? `${castImgURL}${profile_path}` : castPlacholder}
-            alt={original_name}
-          />
-          <p>{original_name}</p>
-          <p>Character {character}</p>
-        </li>
-      ))}
-    </ListCast>
+    <div>
+      <ListCast>
+        {cast.map(({ cast_id, original_name, profile_path, character }) => (
+          <CastItem key={cast_id}>
+            <CastImg
+              src={
+                profile_path ? `${castImgURL}${profile_path}` : castPlacholder
+              }
+              alt={original_name}
+            />
+            <Wrapper>
+              <OriginalName>{original_name}</OriginalName>
+              <Character>Character:</Character>
+              <CharacterText>{character}</CharacterText>
+            </Wrapper>
+          </CastItem>
+        ))}
+      </ListCast>
+    </div>
   );
 };
 

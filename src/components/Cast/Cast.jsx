@@ -16,9 +16,9 @@ const Cast = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <>
       <CastList cast={cast} />
-    </div>
+    </>
   );
 };
 

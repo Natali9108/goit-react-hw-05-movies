@@ -13,7 +13,6 @@ export const GlobalStyles = css`
       'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
       'Helvetica Neue', sans-serif;
     color: ${theme.colors.dark};
-    /* background: ${theme.colors.mainBackground}; */
     min-height: 100vh;
 
     font-style: normal;
@@ -26,7 +25,7 @@ export const GlobalStyles = css`
   h5,
   h6,
   p {
-    margin-top: 0;
+    margin: 0;
   }
 
   ul,

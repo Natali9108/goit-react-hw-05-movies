@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as ApiServise from '../../servises/Api';
 import { ReviewsList } from './ReviewsList';
+import { Message } from 'components';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -18,7 +19,7 @@ const Reviews = () => {
   return (
     <div>
       {reviews.length === 0 ? (
-        <p>We don't hane ane reviews for this movie</p>
+        <Message text="We don't hane ane reviews for this movie" />
       ) : (
         <ReviewsList reviews={reviews} />
       )}

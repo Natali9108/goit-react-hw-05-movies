@@ -5,18 +5,21 @@ import { Container, Header, Nav, Link } from './Layout.styled';
 
 export const Layout = () => {
   return (
-    <Container>
+    <>
       <Header>
         <Nav>
           <Link to="/">Home</Link>
           <Link to="/movies">Movies </Link>
         </Nav>
       </Header>
+
       <main>
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
+        <Container>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </Container>
       </main>
-    </Container>
+    </>
   );
 };
